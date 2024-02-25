@@ -57,11 +57,7 @@ Save this file in `~/.ssh/ci_ubuntu`, where ci is for cloud init and ubuntu for 
               - $(cat <PATH_TO_YOUR_PUB_KEY>.pub)
         
         # Enable password authentication with the SSH daemon
-        ssh_pwauth: True
-        
-        # Set the default password for the user (it's recommended to use SSH keys instead)
-        password: yourpassword
-        chpasswd: { expire: False }
+        ssh_pwauth: False
         write_files:
           - path: /etc/netplan/01-netcfg.yaml
             content: |
