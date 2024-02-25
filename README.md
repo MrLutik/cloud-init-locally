@@ -47,31 +47,31 @@ Save this file in `~/.ssh/ci_ubuntu`, where ci is for cloud init and ubuntu for 
     * cloud-config
     ```bash
     ( echo "#cloud-config
-users:
-  - name: ubuntu
-    gecos: Ubuntu
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    groups: users, admin
-    shell: /bin/bash
-    ssh-authorized-keys:
-      - $(cat <PATH_TO_YOUR_PUB_KEY>.pub)
-
-# Enable password authentication with the SSH daemon
-ssh_pwauth: True
-
-# Set the default password for the user (it's recommended to use SSH keys instead)
-password: yourpassword
-chpasswd: { expire: False }
-write_files:
-  - path: /etc/netplan/01-netcfg.yaml
-    content: |
-      network:
-        version: 2
-        ethernets:
-          all:
-            match:
-              name: \"en*\"
-            dhcp4: true" ) > cloud-config
+        users:
+          - name: ubuntu
+            gecos: Ubuntu
+            sudo: ALL=(ALL) NOPASSWD:ALL
+            groups: users, admin
+            shell: /bin/bash
+            ssh-authorized-keys:
+              - $(cat <PATH_TO_YOUR_PUB_KEY>.pub)
+        
+        # Enable password authentication with the SSH daemon
+        ssh_pwauth: True
+        
+        # Set the default password for the user (it's recommended to use SSH keys instead)
+        password: yourpassword
+        chpasswd: { expire: False }
+        write_files:
+          - path: /etc/netplan/01-netcfg.yaml
+            content: |
+              network:
+                version: 2
+                ethernets:
+                  all:
+                    match:
+                      name: \"en*\"
+                    dhcp4: true" ) > cloud-config
     ```
     * user-data
     ```bash
