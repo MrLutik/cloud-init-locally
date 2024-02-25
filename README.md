@@ -105,11 +105,11 @@ sudo agt-get udpate && apt-get install qemu-guest-agent -y
 sudo systemctl enable qemu-guest-agent --now
 ```
 4. Clean your image
-```
+```bash
 sudo cloud-init clean
 ```
 5. Delete your machid-id data 
-``bash
+```bash
 sudo truncate -s 0 /etc/machine-id
 sudo rm /var/lib/dbus/machine-id
 sudo ln -s /etc/machine-id /var/lib/dbus/machine-id
